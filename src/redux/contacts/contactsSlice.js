@@ -26,7 +26,7 @@ const contactSlice = createSlice({
     [fetchContacts.rejected]: handleRejected,
     [addContacts.rejected]: handleRejected,
     [deleteContacts.rejected]: handleRejected,
-    
+
     [fetchContacts.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
@@ -48,18 +48,5 @@ const contactSlice = createSlice({
     },
   },
 });
-
-export const filterSlice = createSlice({
-  name: 'filter',
-  initialState: '',
-  reducers: {
-    filterChange(_, action) {
-      return action.payload;
-    },
-  },
-});
-
-export const { filterChange } = filterSlice.actions;
-export const filterReducer = filterSlice.reducer;
 
 export const contactsReducer = contactSlice.reducer;

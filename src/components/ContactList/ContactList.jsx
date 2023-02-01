@@ -3,18 +3,10 @@ import css from './ContactList.module.css';
 import ContactItem from '../ContactItem/ContactItem';
 
 import { useSelector } from 'react-redux';
-import { selectContacts, selectFilter } from 'redux/selectors';
+import { getVisibleContacts } from 'redux/contacts/selectors';
 
 const ContactList = () => {
-  const contacts = useSelector(selectContacts);
-  const filter = useSelector(selectFilter);
-
-  const getVisibleContacts = () => {
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
-  };
-  const visibleContacts = getVisibleContacts();
+  const visibleContacts = useSelector(getVisibleContacts);
 
   return (
     <ul className={css.list__items}>
